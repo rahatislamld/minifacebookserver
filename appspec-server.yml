@@ -1,0 +1,18 @@
+version: 0.0
+backend:
+  hooks:
+    - BeforeInstall:
+        - location: scripts/beforeInstall.sh
+          timeout: 300
+          runas: root
+    - AfterInstall:
+        - location: scripts/afterInstall.sh
+          timeout: 300
+          runas: root
+    - ApplicationStart:
+        - location: scripts/applicationStart.sh
+          timeout: 300
+          runas: root
+  files:
+    - source: server
+      destination: /var/www/backend
